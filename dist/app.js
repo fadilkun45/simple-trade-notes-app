@@ -3,10 +3,13 @@ const app = express();
 const path = require('path');
 const fs = require('fs').promises;
 const { readFile } = require ('fs');
+const compression = require('compression');
 const fileName = path.join(__dirname, './config/fileArray.json');
 
 // register view engine
 app.set('view engine', 'ejs');
+
+app.use(compression())
 
 // adding express static files
 app.use(express.static(path.join(__dirname, '../views/public')));
